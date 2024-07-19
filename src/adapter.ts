@@ -410,7 +410,7 @@ export class MongooseAdapter implements BatchAdapter, FilteredAdapter, Updatable
    * @param {Model} model Model instance from enforcer
    * @returns {Promise<Boolean>}
    */
-  async savePolicy(model: Model) {
+  async savePolicy(model: Model): Promise<boolean> {
     const options: sessionOption = {};
     if (this.isSynced) options.session = await this.getTransaction();
 
@@ -485,7 +485,7 @@ export class MongooseAdapter implements BatchAdapter, FilteredAdapter, Updatable
         'addPolicies is only supported by SyncedAdapter. See newSyncedAdapter'
       );
     try {
-      const promises = rules.map(async (rule) => this.addPolicy(sec, pType, rule));
+      const promises = rules.map((rule) => this.addPolicy(sec, pType, rule));
       await Promise.all(promises);
 
       this.autoCommit && options.session && (await options.session.commitTransaction());
