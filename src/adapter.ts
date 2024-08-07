@@ -415,7 +415,7 @@ export class MongooseAdapter implements BatchAdapter, FilteredAdapter, Updatable
     if (this.isSynced) options.session = await this.getTransaction();
 
     try {
-      const lines: IModel[] = [];
+      const lines = [];
       const policyRuleAST = model.model.get('p') instanceof Map ? model.model.get('p')! : new Map();
       const groupingPolicyAST =
         model.model.get('g') instanceof Map ? model.model.get('g')! : new Map();
@@ -432,7 +432,7 @@ export class MongooseAdapter implements BatchAdapter, FilteredAdapter, Updatable
         }
       }
 
-      await this.casbinRule.collection.insertMany(lines, options);
+      await this.casbinRule.collection.insertMany(lines as any[], options);
 
       this.autoCommit && options.session && (await options.session.commitTransaction());
     } catch (err) {
