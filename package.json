@@ -1,6 +1,6 @@
 {
   "name": "@conpago/casbin-mongoose-adapter",
-  "version": "5.4.2",
+  "version": "5.4.3",
   "description": "Mongoose adapter for Casbin",
   "main": "lib/cjs/index.js",
   "typings": "lib/cjs/index.d.ts",
@@ -54,10 +54,9 @@
     "coverage": "nyc mocha -- --config test/.mocharc.js",
     "postpack": "npm run clean",
     "build": "npm run clean && npm run build:cjs & npm run build:esm",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "npx -y tsc -p tsconfig.cjs.json",
+    "build:esm": "npx -y tsc -p tsconfig.esm.json",
     "clean": "rimraf lib",
-    "postinstall": "npm run build",
     "prepare": "npm run build"
   },
   "devDependencies": {
