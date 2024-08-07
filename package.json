@@ -1,15 +1,18 @@
 {
   "name": "@conpago/casbin-mongoose-adapter",
-  "version": "5.4.3",
+  "version": "5.4.4",
   "description": "Mongoose adapter for Casbin",
   "main": "lib/cjs/index.js",
-  "typings": "lib/cjs/index.d.ts",
+  "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
   "license": "Apache-2.0",
   "homepage": "https://github.com/conpagoaus/mongoose-adapter",
   "author": {
     "name": "Node-Casbin"
   },
+  "files": [
+    "lib"
+  ],
   "contributors": [
     {
       "name": "Eugene Obrezkov",
